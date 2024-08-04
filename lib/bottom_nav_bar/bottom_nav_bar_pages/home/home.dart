@@ -1,12 +1,10 @@
-// home.dart
-
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
 import 'app_bar/home_app_bar.dart';
-import 'catogory/food_category.dart';
-import 'food_cards/data.dart';
-import 'food_cards/food_card.dart';
+import 'widgets/carousel/carousel.dart';
+import 'widgets/catogory/food_category.dart';
+import 'widgets/food_cards/data.dart';
+import 'widgets/food_cards/food_card.dart';
 
 class HomePage extends StatefulWidget {
   final Function(bool) onToggleTheme;
@@ -24,18 +22,11 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int notificationNumber = 0;
-  String locationAddress = 'Your Location Address';
   String selectedCategory = "Pizza";
 
   void _onCategorySelected(String category) {
     setState(() {
       selectedCategory = category;
-    });
-  }
-
-  void _onFavoriteChanged(FoodModel foodItem, bool isFavorite) {
-    setState(() {
-      foodItem.isFavorite = isFavorite;
     });
   }
 
@@ -72,51 +63,6 @@ class _HomePageState extends State<HomePage> {
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class ImageCarousel extends StatelessWidget {
-  const ImageCarousel({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return CarouselSlider(
-      items: [
-        buildImageContainer(
-          const AssetImage('assets/img/courusel/1.png'),
-        ),
-        buildImageContainer(
-          const AssetImage('assets/img/courusel/2.png'),
-        ),
-        buildImageContainer(
-          const AssetImage('assets/img/courusel/3.png'),
-        ),
-      ],
-      options: CarouselOptions(
-        height: 180,
-        aspectRatio: 16 / 9,
-        viewportFraction: 0.8,
-        autoPlay: true,
-        autoPlayInterval: const Duration(seconds: 6),
-        autoPlayAnimationDuration: const Duration(milliseconds: 1500),
-        enlargeCenterPage: true,
-        enlargeFactor: 0.3,
-        reverse: true,
-      ),
-    );
-  }
-
-  Widget buildImageContainer(ImageProvider imageProvider) {
-    return Container(
-      margin: const EdgeInsets.all(8),
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: imageProvider,
-          fit: BoxFit.cover,
-        ),
-        borderRadius: BorderRadius.circular(25),
       ),
     );
   }

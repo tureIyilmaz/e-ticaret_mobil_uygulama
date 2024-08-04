@@ -1,186 +1,161 @@
+import 'dart:math';
+
+import 'package:e_ticaret_mobil_uygulama/bottom_nav_bar/bottom_nav_bar_pages/profile/widgets/log_in.dart';
+import 'package:e_ticaret_mobil_uygulama/bottom_nav_bar/bottom_nav_bar_pages/profile/widgets/sign_up.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_sign_in/google_sign_in.dart';
-import 'package:intl_phone_field/intl_phone_field.dart';
 
-import 'register.dart';
-
-final _formKey = GlobalKey<FormState>();
-
-class Profile extends StatelessWidget {
+class Profile extends StatefulWidget {
   const Profile({super.key});
+
+  @override
+  State<Profile> createState() => _ProfileState();
+}
+
+class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
+  bool _isSignUp = false;
+
+  late AnimationController _animationController;
+  late Animation<double> _animationTextRotate;
+
+  void setAnimation() {
+    _animationController = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 200));
+    _animationTextRotate =
+        Tween<double>(begin: 0, end: pi / 2).animate(_animationController);
+  }
+
+  @override
+  void initState() {
+    setAnimation();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: Align(
-        alignment: Alignment.bottomCenter,
-        child: Container(
-          margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 20),
-          padding: const EdgeInsets.all(30.0),
-          decoration: BoxDecoration(
-            color: const Color(0xFFf0f5f5),
-            borderRadius: BorderRadius.circular(20),
-          ),
-          height: 700,
-          child: Form(
-            key: _formKey,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Image.asset(
-                  'assets/img/courusel/logo.png',
-                  fit: BoxFit.cover,
-                  height: 200,
-                ),
-                const SizedBox(
-                  height: 40,
-                ),
-                IntlPhoneField(
-                  decoration: const InputDecoration(
-                    labelText: 'Telefon Numarası',
-                    border: OutlineInputBorder(
-                      borderSide: BorderSide(),
-                    ),
-                  ),
-                  initialCountryCode: 'TR',
-                  onChanged: (phone) {},
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                TextFormField(
-                  decoration: const InputDecoration(
-                    hintText: 'Lütfen şifrenizi giriniz.',
-                    border: OutlineInputBorder(
-                      borderSide: BorderSide(width: 1),
-                    ),
-                  ),
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return "Geçerli bir şifre giriniz.";
-                    }
-                    return null;
-                  },
-                ),
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: TextButton(
-                    onPressed: () {},
-                    child: const Text(
-                      "Şifremi unuttum",
-                      style: TextStyle(
-                        decoration: TextDecoration.underline,
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.red,
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 120, vertical: 14),
-                  ),
-                  onPressed: () {},
-                  child: const Text(
-                    "Giriş yap",
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.red[100],
-                      ),
-                      onPressed: () async {
-                        final result = await FacebookAuth.instance.login();
-                        if (result.status == LoginStatus.success) {
-                        } else {}
-                      },
-                      child: const Row(
-                        children: [
-                          Icon(
-                            Icons.facebook,
-                            color: Colors.blue,
-                          ),
-                          SizedBox(width: 8),
-                          Text(
-                            'Facebbok\n ile bağlan',
-                            style: TextStyle(
-                              color: Colors.black,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.red[100],
-                      ),
-                      onPressed: () async {
-                        // ignore: no_leading_underscores_for_local_identifiers
-                        final GoogleSignIn _googleSignIn = GoogleSignIn();
-                        try {
-                          final result = await _googleSignIn.signIn();
-                          if (result != null) {}
-                          // ignore: empty_catches
-                        } catch (error) {}
-                      },
-                      child: const Row(
-                        children: [
-                          Icon(
-                            FontAwesomeIcons.google,
-                            color: Colors.red,
-                          ),
-                          SizedBox(width: 8),
-                          Text(
-                            'Google\n ile bağlan',
-                            style: TextStyle(
-                              color: Colors.black,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text("Üye olmak için"),
-                    TextButton(
-                      onPressed: () {
-                        Route route = MaterialPageRoute(builder: (context) {
-                          return const Register();
-                        });
-                        Navigator.push(context, route);
-                      },
-                      child: const Text(
-                        "Tıklayınız...",
-                        style: TextStyle(
-                          decoration: TextDecoration.underline,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
+      body: Stack(
+        children: [
+          GestureDetector(
+            onTap: () {
+              setState(() {
+                _isSignUp = !_isSignUp;
+                if (_isSignUp) {
+                  _animationController.forward();
+                } else {
+                  _animationController.reverse();
+                }
+              });
+            },
+            child: AnimatedPositioned(
+              duration: const Duration(milliseconds: 200),
+              width: MediaQuery.of(context).size.width * 0.9,
+              height: MediaQuery.of(context).size.height,
+              left: _isSignUp ? -(MediaQuery.of(context).size.width * 0.9) : 0,
+              child: Container(
+                color: Colors.red,
+                child: const LoginForm(),
+              ),
             ),
           ),
-        ),
+          AnimatedPositioned(
+            duration: const Duration(milliseconds: 200),
+            width: MediaQuery.of(context).size.width * 0.9,
+            left: _isSignUp
+                ? (MediaQuery.of(context).size.width * 0.1)
+                : (MediaQuery.of(context).size.width * 0.9),
+            height: MediaQuery.of(context).size.height,
+            child: Container(
+              color: Colors.white,
+              child: const SignUpForm(),
+            ),
+          ),
+          AnimatedPositioned(
+            duration: const Duration(milliseconds: 200),
+            bottom: _isSignUp
+                ? MediaQuery.of(context).size.height * 0.45
+                : MediaQuery.of(context).size.height * 0.1,
+            left:
+                _isSignUp ? -70 : MediaQuery.of(context).size.width * 0.45 - 90,
+            child: GestureDetector(
+              onTap: () {
+                setState(() {
+                  _isSignUp = !_isSignUp;
+                  if (_isSignUp) {
+                    _animationController.forward();
+                  } else {
+                    _animationController.reverse();
+                  }
+                });
+              },
+              child: SizedBox(
+                width: 180,
+                child: AnimatedBuilder(
+                  animation: _animationTextRotate,
+                  builder: (context, child) {
+                    return Transform.rotate(
+                      angle: _animationTextRotate.value,
+                      child: Text(
+                        'GİRİŞ YAP',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: _isSignUp ? 21.0 : 24.0,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
+            ),
+          ),
+          AnimatedPositioned(
+            duration: const Duration(milliseconds: 200),
+            bottom: _isSignUp
+                ? MediaQuery.of(context).size.height * 0.1
+                : MediaQuery.of(context).size.height * 0.45,
+            right:
+                _isSignUp ? MediaQuery.of(context).size.width * 0.45 - 90 : -70,
+            child: GestureDetector(
+              onTap: () {
+                setState(() {
+                  _isSignUp = !_isSignUp;
+                  if (_isSignUp) {
+                    _animationController.forward();
+                  } else {
+                    _animationController.reverse();
+                  }
+                });
+              },
+              child: SizedBox(
+                width: 180,
+                child: AnimatedBuilder(
+                  animation: _animationTextRotate,
+                  builder: (context, child) {
+                    return Transform.rotate(
+                      angle: _animationTextRotate.value - pi / 2,
+                      child: Text(
+                        'KAYIT OL',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: _isSignUp ? 24.0 : 21.0,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.red,
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1044186853929",
+    "project_id": "login-app-f3f19",
+    "storage_bucket": "login-app-f3f19.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1044186853929:android:a0a2b349133119e8c7a238",
+        "android_client_info": {
+          "package_name": "com.example.e_ticaret_mobil_uygulama"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCoKEju_b27g4FGl9c1wXKlCFNaSh2PNUI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

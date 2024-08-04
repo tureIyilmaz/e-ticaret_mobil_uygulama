@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class FoodModel {
   final String categoryName;
   final String name;
-  final Image icon;
+  final Image image;
   final String explanation;
   final double price;
   final bool discount;
@@ -15,7 +15,7 @@ class FoodModel {
   FoodModel.FoodItem({
     required this.categoryName,
     required this.name,
-    required this.icon,
+    required this.image,
     required this.explanation,
     required this.price,
     required this.discount,
@@ -29,7 +29,7 @@ List<FoodModel> foodData = [
   FoodModel.FoodItem(
     categoryName: "Çorba",
     name: "Brokoli Çorbası",
-    icon: Image.asset('assets/img/menu/baslangiclar/brokoli.png'),
+    image: Image.asset('assets/img/menu/baslangiclar/brokoli.png'),
     explanation:
         "Sağlıklı ve lezzetli brokoli çorbası, 300gr ve yanında ekmek ile.",
     price: 49.99,
@@ -38,7 +38,7 @@ List<FoodModel> foodData = [
   FoodModel.FoodItem(
     categoryName: "Çorba",
     name: "Domates Çorbası",
-    icon: Image.asset('assets/img/menu/baslangiclar/domates.png'),
+    image: Image.asset('assets/img/menu/baslangiclar/domates.png'),
     explanation:
         "Taze domateslerle hazırlanmış çorba, 300gr ve yanında ekmek ile.",
     price: 39.99,
@@ -47,7 +47,7 @@ List<FoodModel> foodData = [
   FoodModel.FoodItem(
     categoryName: "Çorba",
     name: "Ezogelin Çorbası",
-    icon: Image.asset('assets/img/menu/baslangiclar/ezogelin.png'),
+    image: Image.asset('assets/img/menu/baslangiclar/ezogelin.png'),
     explanation:
         "Klasik ve doyurucu ezogelin çorbası, 300gr ve yanında ekmek ile.",
     price: 44.99,
@@ -56,7 +56,7 @@ List<FoodModel> foodData = [
   FoodModel.FoodItem(
     categoryName: "Çorba",
     name: "Mercimek Çorbası",
-    icon: Image.asset('assets/img/menu/baslangiclar/mercimek.png'),
+    image: Image.asset('assets/img/menu/baslangiclar/mercimek.png'),
     explanation:
         "Besleyici ve lezzetli mercimek çorbası, 300gr ve yanında ekmek ile.",
     price: 34.99,
@@ -65,7 +65,7 @@ List<FoodModel> foodData = [
   FoodModel.FoodItem(
     categoryName: "Çorba",
     name: "Yayla Çorbası",
-    icon: Image.asset('assets/img/menu/baslangiclar/yayla.png'),
+    image: Image.asset('assets/img/menu/baslangiclar/yayla.png'),
     explanation:
         "Ferahlatıcı ve hafif yayla çorbası, 300gr ve yanında ekmek ile.",
     price: 39.99,
@@ -74,7 +74,7 @@ List<FoodModel> foodData = [
   FoodModel.FoodItem(
     categoryName: "Çorba",
     name: "Tavuk Çorbası",
-    icon: Image.asset('assets/img/menu/baslangiclar/tavuk.png'),
+    image: Image.asset('assets/img/menu/baslangiclar/tavuk.png'),
     explanation: "Protein dolu tavuk çorbası, 300gr ve yanında ekmek ile.",
     price: 59.99,
     discount: random.nextBool(),
@@ -82,7 +82,7 @@ List<FoodModel> foodData = [
   FoodModel.FoodItem(
     categoryName: "Salata",
     name: "Akdeniz Salata",
-    icon: Image.asset('assets/img/menu/salatalar/akdeniz_salata.png'),
+    image: Image.asset('assets/img/menu/salatalar/akdeniz_salata.png'),
     explanation: "Mevsim yeşillikleri, beyaz peynir, zeytin.",
     price: 89.99,
     discount: random.nextBool(),
@@ -90,7 +90,7 @@ List<FoodModel> foodData = [
   FoodModel.FoodItem(
     categoryName: "Salata",
     name: "Caşnigir Salata",
-    icon: Image.asset('assets/img/menu/salatalar/caşnigir_salata.png'),
+    image: Image.asset('assets/img/menu/salatalar/caşnigir_salata.png'),
     explanation:
         "Marul, havuç, kırmızılahana, turşu, domates, roka, maydanoz, salatalık, nar ekşisi.",
     price: 84.99,
@@ -99,7 +99,7 @@ List<FoodModel> foodData = [
   FoodModel.FoodItem(
     categoryName: "Salata",
     name: "Falafel Salata",
-    icon: Image.asset('assets/img/menu/salatalar/falafel_salata.png'),
+    image: Image.asset('assets/img/menu/salatalar/falafel_salata.png'),
     explanation: "Mevsim yeşillikleri, falafel toplar.",
     price: 94.99,
     discount: random.nextBool(),
@@ -107,7 +107,7 @@ List<FoodModel> foodData = [
   FoodModel.FoodItem(
     categoryName: "Salata",
     name: "Mevsim Salata",
-    icon: Image.asset('assets/img/menu/salatalar/mevsim_salata.png'),
+    image: Image.asset('assets/img/menu/salatalar/mevsim_salata.png'),
     explanation: "Mevsim yeşillikleri, özel soslar.",
     price: 59.99,
     discount: random.nextBool(),
@@ -115,7 +115,7 @@ List<FoodModel> foodData = [
   FoodModel.FoodItem(
     categoryName: "Salata",
     name: "Ton Balıklı Salata",
-    icon: Image.asset('assets/img/menu/salatalar/ton_balıklı_salata.png'),
+    image: Image.asset('assets/img/menu/salatalar/ton_balıklı_salata.png'),
     explanation: "Mevsim yeşillikleri, ton balığı.",
     price: 109.99,
     discount: random.nextBool(),
@@ -123,7 +123,7 @@ List<FoodModel> foodData = [
   FoodModel.FoodItem(
     categoryName: "Pizza",
     name: "Margarita",
-    icon: Image.asset('assets/img/menu/pizzalar/margarita.jpg'),
+    image: Image.asset('assets/img/menu/pizzalar/margarita.jpg'),
     explanation: "Özel Sezar Sos, Mozzarella Peyniri",
     price: 285.99,
     discount: true,
@@ -131,7 +131,7 @@ List<FoodModel> foodData = [
   FoodModel.FoodItem(
     categoryName: "Pizza",
     name: "Sucukbol",
-    icon: Image.asset('assets/img/menu/pizzalar/sucukbol.jpg'),
+    image: Image.asset('assets/img/menu/pizzalar/sucukbol.jpg'),
     explanation: "Özel Sezar Sos, Mozzarella Peyniri, Dilim Sucuk",
     price: 305.49,
     discount: false,
@@ -139,7 +139,7 @@ List<FoodModel> foodData = [
   FoodModel.FoodItem(
     categoryName: "Pizza",
     name: "Etibol",
-    icon: Image.asset('assets/img/menu/pizzalar/etibol.jpg'),
+    image: Image.asset('assets/img/menu/pizzalar/etibol.jpg'),
     explanation:
         "Özel Sezar Sos, Mozzarella Peyniri, Jambon, Sosis, Küp Sucuk, Pastırma, Pepperoni, Soğan",
     price: 335.99,
@@ -148,7 +148,7 @@ List<FoodModel> foodData = [
   FoodModel.FoodItem(
     categoryName: "Pizza",
     name: "Karışık",
-    icon: Image.asset('assets/img/menu/pizzalar/karışık.jpg'),
+    image: Image.asset('assets/img/menu/pizzalar/karışık.jpg'),
     explanation:
         "Özel Sezar Sos, Mozzarella Peyniri, Küp Sucuk, Sosis, Mantar, Mısır, Siyah Zeytin",
     price: 315.49,
@@ -157,7 +157,7 @@ List<FoodModel> foodData = [
   FoodModel.FoodItem(
     categoryName: "Pizza",
     name: "Parti",
-    icon: Image.asset('assets/img/menu/pizzalar/parti.jpg'),
+    image: Image.asset('assets/img/menu/pizzalar/parti.jpg'),
     explanation:
         "Özel Sezar Sos, Mozzarella Peyniri, Sosis, Mısır, Siyah Zeytin",
     price: 305.99,
@@ -166,7 +166,7 @@ List<FoodModel> foodData = [
   FoodModel.FoodItem(
     categoryName: "Pizza",
     name: "Akdeniz",
-    icon: Image.asset('assets/img/menu/pizzalar/akdeniz.jpg'),
+    image: Image.asset('assets/img/menu/pizzalar/akdeniz.jpg'),
     explanation:
         "Özel Sezar Sos, Mozzarella Peyniri, Beyaz Peynir, Mantar, Siyah Zeytin, Yeşil Biber, Domates, Kekik",
     price: 315.99,
@@ -175,7 +175,7 @@ List<FoodModel> foodData = [
   FoodModel.FoodItem(
     categoryName: "Pizza",
     name: "Kavurmalı",
-    icon: Image.asset('assets/img/menu/pizzalar/kavurmali.jpg'),
+    image: Image.asset('assets/img/menu/pizzalar/kavurmali.jpg'),
     explanation:
         "Özel Sezar Sos, Mozzarella Peyniri, Kavurma, Yeşil Biber, Közlenmiş Kırmızı Biber, Soğan",
     price: 335.49,
@@ -184,7 +184,7 @@ List<FoodModel> foodData = [
   FoodModel.FoodItem(
     categoryName: "Pizza",
     name: "Ton Balıklı",
-    icon: Image.asset('assets/img/menu/pizzalar/ton_balikli.jpg'),
+    image: Image.asset('assets/img/menu/pizzalar/ton_balikli.jpg'),
     explanation:
         "Özel Sezar Sos, Mozzarella Peyniri, Ton Balığı, Siyah Zeytin, Domates, Mısır, Soğan",
     price: 335.99,
@@ -193,7 +193,7 @@ List<FoodModel> foodData = [
   FoodModel.FoodItem(
     categoryName: "Pizza",
     name: "Piknik",
-    icon: Image.asset('assets/img/menu/pizzalar/piknik.jpg'),
+    image: Image.asset('assets/img/menu/pizzalar/piknik.jpg'),
     explanation: "Özel Sezar Sos, Mozzarella Peyniri, Jambon, Mantar",
     price: 285.49,
     discount: true,
@@ -201,7 +201,7 @@ List<FoodModel> foodData = [
   FoodModel.FoodItem(
     categoryName: "Pizza",
     name: "Pepperonni",
-    icon: Image.asset('assets/img/menu/pizzalar/pepperoni.jpg'),
+    image: Image.asset('assets/img/menu/pizzalar/pepperoni.jpg'),
     explanation: "Özel Sezar Sos, Mozzarella Peyniri, Pepperoni",
     price: 305.99,
     discount: false,
@@ -209,7 +209,7 @@ List<FoodModel> foodData = [
   FoodModel.FoodItem(
     categoryName: "Pizza",
     name: "Sarımsaklı Sucukbol",
-    icon: Image.asset('assets/img/menu/pizzalar/sarimsak_soslu_sucukbol.jpg'),
+    image: Image.asset('assets/img/menu/pizzalar/sarimsak_soslu_sucukbol.jpg'),
     explanation:
         "Özel Sezar Sos, Mozzarella Peyniri, Sarımsak Sos, Dilim Sucuk",
     price: 305.49,
@@ -218,7 +218,7 @@ List<FoodModel> foodData = [
   FoodModel.FoodItem(
     categoryName: "Pizza",
     name: "İtalyan",
-    icon: Image.asset('assets/img/menu/pizzalar/italyan.jpg'),
+    image: Image.asset('assets/img/menu/pizzalar/italyan.jpg'),
     explanation:
         "Özel Sezar Sos, Mozzarella Peyniri, Küp Sucuk, Beyaz Peynir, Közlenmiş Kırmızı Biber, Siyah Zeytin, Mantar",
     price: 315.99,
@@ -227,7 +227,7 @@ List<FoodModel> foodData = [
   FoodModel.FoodItem(
     categoryName: "Pizza",
     name: "Acı Tavukbol",
-    icon: Image.asset('assets/img/menu/pizzalar/aci_tavukbol.jpg'),
+    image: Image.asset('assets/img/menu/pizzalar/aci_tavukbol.jpg'),
     explanation:
         "Özel Sezar Sos, Mozzarella Peyniri, Özel Baharatlı Fırınlanmış Tavuk, Ekstra Tavuk, Közlenmiş Kırmızı Biber, Jalapeno Acı Biber",
     price: 325.49,
@@ -236,7 +236,7 @@ List<FoodModel> foodData = [
   FoodModel.FoodItem(
     categoryName: "Pizza",
     name: "Süper Sezar",
-    icon: Image.asset('assets/img/menu/pizzalar/super_sezar.jpg'),
+    image: Image.asset('assets/img/menu/pizzalar/super_sezar.jpg'),
     explanation:
         "Özel Sezar Sos, Mozzarella Peyniri, Küp Sucuk, Pepperoni, Sosis, Mantar, Siyah Zeytin, Soğan, Yeşil Biber",
     price: 325.99,
@@ -245,7 +245,7 @@ List<FoodModel> foodData = [
   FoodModel.FoodItem(
     categoryName: "Pizza",
     name: "Karışıkbol",
-    icon: Image.asset('assets/img/menu/pizzalar/karisikbol.jpg'),
+    image: Image.asset('assets/img/menu/pizzalar/karisikbol.jpg'),
     explanation:
         "Özel Sezar Sos, Mozzarella Peyniri, Sucuk Küp, Sosis, Jambon, Mantar, Mısır, Yeşil Biber, Siyah Zeytin, Parmesan, Baharat Karışımı",
     price: 325.99,
@@ -254,7 +254,7 @@ List<FoodModel> foodData = [
   FoodModel.FoodItem(
     categoryName: "Pizza",
     name: "Parti",
-    icon: Image.asset('assets/img/menu/pizzalar/parti.jpg'),
+    image: Image.asset('assets/img/menu/pizzalar/parti.jpg'),
     explanation:
         "Özel Sezar Sos, Mozzarella Peyniri, Sosis, Mısır, Siyah Zeytin",
     price: 305.99,
@@ -263,7 +263,7 @@ List<FoodModel> foodData = [
   FoodModel.FoodItem(
     categoryName: "Burger",
     name: "Bufolo Burger",
-    icon: Image.asset('assets/img/menu/burgerler/bufolo_burger.png'),
+    image: Image.asset('assets/img/menu/burgerler/bufolo_burger.png'),
     explanation:
         "150 gr. hamburger köftesi, cheddar peyniri, acılı Smash sos, dilimlenmiş kornişon turşu.",
     price: 89.99,
@@ -272,7 +272,7 @@ List<FoodModel> foodData = [
   FoodModel.FoodItem(
     categoryName: "Burger",
     name: "Cheese Burger",
-    icon: Image.asset('assets/img/menu/burgerler/cheese_burger.png'),
+    image: Image.asset('assets/img/menu/burgerler/cheese_burger.png'),
     explanation:
         "150 gr. hamburger köftesi, Amerikan cheddar peyniri, dilimlenmiş kornişon turşu.",
     price: 99.99,
@@ -281,7 +281,7 @@ List<FoodModel> foodData = [
   FoodModel.FoodItem(
     categoryName: "Burger",
     name: "Classic Burger",
-    icon: Image.asset('assets/img/menu/burgerler/classic_burger.png'),
+    image: Image.asset('assets/img/menu/burgerler/classic_burger.png'),
     explanation:
         "150 gr. hamburger köftesi, smash sos, dilimlenmiş kornişon turşu.",
     price: 79.99,
@@ -290,7 +290,7 @@ List<FoodModel> foodData = [
   FoodModel.FoodItem(
     categoryName: "Burger",
     name: "Mexico Burger",
-    icon: Image.asset('assets/img/menu/burgerler/mexico_burger.png'),
+    image: Image.asset('assets/img/menu/burgerler/mexico_burger.png'),
     explanation:
         "150 gr. hamburger köftesi, acı jalapeno biberleri, salsa sos, cheddar peyniri.",
     price: 119.99,
@@ -299,7 +299,7 @@ List<FoodModel> foodData = [
   FoodModel.FoodItem(
     categoryName: "İçecek",
     name: "Kola",
-    icon: Image.asset('assets/img/menu/içecekler/cola.png'),
+    image: Image.asset('assets/img/menu/içecekler/cola.png'),
     explanation: "Soğuk ve ferahlatıcı kola.",
     price: 14.99,
     discount: random.nextBool(),
@@ -307,7 +307,7 @@ List<FoodModel> foodData = [
   FoodModel.FoodItem(
     categoryName: "İçecek",
     name: "Ayran",
-    icon: Image.asset('assets/img/menu/içecekler/ayran.png'),
+    image: Image.asset('assets/img/menu/içecekler/ayran.png'),
     explanation: "Doğal ve serinletici ayran.",
     price: 9.99,
     discount: random.nextBool(),
@@ -315,7 +315,7 @@ List<FoodModel> foodData = [
   FoodModel.FoodItem(
     categoryName: "İçecek",
     name: "Fanta",
-    icon: Image.asset('assets/img/menu/içecekler/fanta.png'),
+    image: Image.asset('assets/img/menu/içecekler/fanta.png'),
     explanation: "Soğuk ve ferahlatıcı fanta.",
     price: 19.99,
     discount: random.nextBool(),
@@ -323,7 +323,7 @@ List<FoodModel> foodData = [
   FoodModel.FoodItem(
     categoryName: "İçecek",
     name: "Sprite",
-    icon: Image.asset('assets/img/menu/içecekler/sprite.png'),
+    image: Image.asset('assets/img/menu/içecekler/sprite.png'),
     explanation: "Soğuk ve ferahlatıcı fanta.",
     price: 19.99,
     discount: random.nextBool(),
@@ -331,7 +331,7 @@ List<FoodModel> foodData = [
   FoodModel.FoodItem(
     categoryName: "Tatlı",
     name: "Trileçe",
-    icon: Image.asset(
+    image: Image.asset(
       'assets/img/menu/tatlılar/trileçe.png',
     ),
     explanation:
@@ -342,7 +342,7 @@ List<FoodModel> foodData = [
   FoodModel.FoodItem(
     categoryName: "Tatlı",
     name: "Profiterol",
-    icon: Image.asset(
+    image: Image.asset(
       'assets/img/menu/tatlılar/profiterol.png',
     ),
     explanation:
@@ -353,7 +353,7 @@ List<FoodModel> foodData = [
   FoodModel.FoodItem(
     categoryName: "Tatlı",
     name: "Mag",
-    icon: Image.asset(
+    image: Image.asset(
       'assets/img/menu/tatlılar/mag.png',
     ),
     explanation:
@@ -364,7 +364,7 @@ List<FoodModel> foodData = [
   FoodModel.FoodItem(
     categoryName: "Tatlı",
     name: "Kıbrıs Tatlısı",
-    icon: Image.asset(
+    image: Image.asset(
       'assets/img/menu/tatlılar/kıbrıs.png',
     ),
     explanation:
@@ -375,7 +375,7 @@ List<FoodModel> foodData = [
   FoodModel.FoodItem(
     categoryName: "Sos",
     name: "Ketçap",
-    icon: Image.asset('assets/img/menu/soslar/ketçap.jpg'),
+    image: Image.asset('assets/img/menu/soslar/ketçap.jpg'),
     explanation: "",
     price: 5.49,
     discount: true,
@@ -383,7 +383,7 @@ List<FoodModel> foodData = [
   FoodModel.FoodItem(
     categoryName: "Sos",
     name: "Mayonez",
-    icon: Image.asset('assets/img/menu/soslar/mayonez.jpg'),
+    image: Image.asset('assets/img/menu/soslar/mayonez.jpg'),
     explanation: "",
     price: 5.99,
     discount: false,
@@ -391,7 +391,7 @@ List<FoodModel> foodData = [
   FoodModel.FoodItem(
     categoryName: "Sos",
     name: "Acı Sos",
-    icon: Image.asset('assets/img/menu/soslar/aci_sos.jpg'),
+    image: Image.asset('assets/img/menu/soslar/aci_sos.jpg'),
     explanation: "",
     price: 20.49,
     discount: true,
@@ -399,7 +399,7 @@ List<FoodModel> foodData = [
   FoodModel.FoodItem(
     categoryName: "Ana Yemek",
     name: "Bezelye",
-    icon: Image.asset(
+    image: Image.asset(
       'assets/img/menu/ana_yemekler/bezelye.png',
     ),
     explanation:
@@ -410,7 +410,7 @@ List<FoodModel> foodData = [
   FoodModel.FoodItem(
     categoryName: "Ana Yemek",
     name: "Karnıyarık",
-    icon: Image.asset(
+    image: Image.asset(
       'assets/img/menu/ana_yemekler/karnıyarık.png',
     ),
     explanation:
@@ -421,7 +421,7 @@ List<FoodModel> foodData = [
   FoodModel.FoodItem(
     categoryName: "Ana Yemek",
     name: "Izgara Köfte & Pirinç Pilavı",
-    icon: Image.asset(
+    image: Image.asset(
       'assets/img/menu/ana_yemekler/kofte.png',
     ),
     explanation:
@@ -432,7 +432,7 @@ List<FoodModel> foodData = [
   FoodModel.FoodItem(
     categoryName: "Ana Yemek",
     name: "Kuru Fasulye",
-    icon: Image.asset(
+    image: Image.asset(
       'assets/img/menu/ana_yemekler/kuru.png',
     ),
     explanation: "Geleneksel usulde pişirilmiş nefis kuru fasulye yemeği.",
@@ -442,7 +442,7 @@ List<FoodModel> foodData = [
   FoodModel.FoodItem(
     categoryName: "Ana Yemek",
     name: "Makarna",
-    icon: Image.asset(
+    image: Image.asset(
       'assets/img/menu/ana_yemekler/makarna.png',
     ),
     explanation: "Taze sos ile lezzetlendirilmiş klasik makarna.",

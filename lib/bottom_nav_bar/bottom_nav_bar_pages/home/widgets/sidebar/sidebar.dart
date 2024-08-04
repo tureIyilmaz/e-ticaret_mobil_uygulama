@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 
-import '../widgets/side_bar_items.dart';
+import '../side_bar_items.dart';
 
 class SideBar extends StatelessWidget {
   final Function(bool) onToggleTheme;

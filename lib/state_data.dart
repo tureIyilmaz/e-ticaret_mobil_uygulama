@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'bottom_nav_bar/bottom_nav_bar_pages/home/food_cards/data.dart'; // FoodModel erişimi için gerekli
+import 'bottom_nav_bar/bottom_nav_bar_pages/home/widgets/food_cards/data.dart'; // FoodModel erişimi için gerekli
 
 class CartModel {
   final FoodModel foodItem;
@@ -11,7 +11,7 @@ class CartModel {
 
 class CartState extends ChangeNotifier {
   int _counter = 0;
-  List<CartModel> _cartItems = [];
+  final List<CartModel> _cartItems = [];
 
   int get counter => _counter;
   List<CartModel> get cartItems => _cartItems;
@@ -68,7 +68,7 @@ class CartState extends ChangeNotifier {
 }
 
 class FavoriteState extends ChangeNotifier {
-  Set<FoodModel> _favorites = {};
+  final Set<FoodModel> _favorites = {};
 
   Set<FoodModel> get favorites => _favorites;
 

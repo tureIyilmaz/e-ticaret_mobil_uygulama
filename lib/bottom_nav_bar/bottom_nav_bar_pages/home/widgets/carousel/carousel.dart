@@ -9,13 +9,13 @@ class ImageCarousel extends StatelessWidget {
     return CarouselSlider(
       items: [
         buildImageContainer(
-          const AssetImage('assets/img/courusel/1.png'),
+          const AssetImage('assets/img/courusel/1.jpg'),
         ),
         buildImageContainer(
-          const AssetImage('assets/img/courusel/2.png'),
+          const AssetImage('assets/img/courusel/2.jpg'),
         ),
         buildImageContainer(
-          const AssetImage('assets/img/courusel/3.png'),
+          const AssetImage('assets/img/courusel/3.jpg'),
         ),
       ],
       options: CarouselOptions(

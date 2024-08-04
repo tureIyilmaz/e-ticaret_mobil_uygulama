@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../state_data.dart';
+import 'payment.dart';
 
 class RouteCart extends StatelessWidget {
   const RouteCart({super.key});
@@ -64,12 +65,29 @@ class RouteCart extends StatelessWidget {
                                 width: 50,
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(360),
-                                  child: cartItem.foodItem.icon,
+                                  child: cartItem.foodItem.image,
                                 ),
                               ),
                               title: Text(cartItem.foodItem.name),
-                              subtitle: Text(
-                                'Fiyat: ${(cartItem.foodItem.price * cartItem.quantity).toStringAsFixed(2)} TL',
+                              subtitle: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  if (cartItem.foodItem.discount) ...[
+                                    Text(
+                                      'Fiyat: ${(cartItem.foodItem.price * cartItem.quantity).toStringAsFixed(2)} TL',
+                                      style: const TextStyle(
+                                        decoration: TextDecoration.lineThrough,
+                                      ),
+                                    ),
+                                    Text(
+                                      'İndirimli Fiyat: ${(cartItem.foodItem.price * cartItem.quantity * 0.9).toStringAsFixed(2)} TL',
+                                    ),
+                                  ] else ...[
+                                    Text(
+                                      'Fiyat: ${(cartItem.foodItem.price * cartItem.quantity).toStringAsFixed(2)} TL',
+                                    ),
+                                  ]
+                                ],
                               ),
                               trailing: Row(
                                 mainAxisSize: MainAxisSize.min,
@@ -103,12 +121,16 @@ class RouteCart extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
-                            'Toplam: ${totalPrice.toStringAsFixed(2)} TL',
-                            style: const TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
+                          Column(
+                            children: [
+                              Text(
+                                'Toplam: ${totalPrice.toStringAsFixed(2)} TL',
+                                style: const TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
                           ),
                           ElevatedButton(
                             onPressed: () {
@@ -120,7 +142,12 @@ class RouteCart extends StatelessWidget {
                                 ),
                               );
                             },
-                            child: const Text('Ödemeye Git'),
+                            child: const Text(
+                              'Ödemeye Git',
+                              style: TextStyle(
+                                color: Colors.black,
+                              ),
+                            ),
                           ),
                         ],
                       ),
@@ -128,44 +155,6 @@ class RouteCart extends StatelessWidget {
                   ],
                 );
         },
-      ),
-    );
-  }
-}
-
-class PaymentScreen extends StatelessWidget {
-  final double totalPrice;
-
-  const PaymentScreen({super.key, required this.totalPrice});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Ödeme'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'Toplam Tutar: ${totalPrice.toStringAsFixed(2)} TL',
-              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                // Ödeme işlemleri tamamlandıktan sonra yapılabilecek işlemler
-                // Örneğin ödeme onayı, geri yönlendirme gibi
-                Navigator.pop(context); // Ödeme sayfasından çık
-                // Ödeme tamamlandıktan sonra sepeti sıfırla gibi işlemler yapılabilir.
-                Provider.of<CartState>(context, listen: false)
-                    .clearCart(); // Sepeti sıfırla
-              },
-              child: const Text('Ödemeyi Tamamla'),
-            ),
-          ],
-        ),
       ),
     );
   }

@@ -1,14 +1,15 @@
+import 'package:e_ticaret_mobil_uygulama/bottom_nav_bar/bottom_nav_bar_pages/home/home_pages/food_info.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../state_data.dart';
+import '../../../../../state_data.dart';
 import 'data.dart';
 
 // ignore: must_be_immutable
 class FoodCard extends StatefulWidget {
   final FoodModel foodItem;
 
-  FoodCard({
+  const FoodCard({
     super.key,
     required this.foodItem,
   });
@@ -34,12 +35,22 @@ class _FoodCardState extends State<FoodCard> {
         color: Colors.grey[50],
         child: ListTile(
           minVerticalPadding: 20,
-          leading: SizedBox(
-            height: 60,
-            width: 60,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(360),
-              child: widget.foodItem.icon,
+          leading: GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => FoodInfo(foodItem: widget.foodItem),
+                ),
+              );
+            },
+            child: SizedBox(
+              height: 60,
+              width: 60,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(360),
+                child: widget.foodItem.image,
+              ),
             ),
           ),
           title: Row(

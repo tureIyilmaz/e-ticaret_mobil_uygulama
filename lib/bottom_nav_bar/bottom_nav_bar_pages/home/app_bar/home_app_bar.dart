@@ -1,9 +1,7 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 
-import '../sidebar/sidebar.dart';
 import '../widgets/search_items.dart';
+import '../widgets/sidebar/sidebar.dart';
 import 'location.dart';
 
 class HomeAppBar extends StatefulWidget {

@@ -15,59 +15,48 @@ class Location extends StatefulWidget {
 
 class _LocationState extends State<Location> {
   late GoogleMapController mapController;
-  final LatLng _center =
+  final LatLng _initialPosition =
       const LatLng(41.0351, 28.8641); // İstanbul, Bağcılar koordinatları
-
   String _address = 'Seçili adres burada görünecek';
   LatLng _selectedLatLng = const LatLng(41.0351, 28.8641);
-  final TextEditingController _addressController = TextEditingController();
   bool _isLoading = false;
 
   void _onMapCreated(GoogleMapController controller) {
     mapController = controller;
   }
 
-  Future<bool> _checkInternetConnection() async {
-    var connectivityResult = await (Connectivity().checkConnectivity());
-    return connectivityResult != ConnectivityResult.none;
-  }
-
   Future<void> _getAddressFromLatLng(LatLng coordinates) async {
     setState(() {
       _isLoading = true;
       _address = 'Adres bilgisi yükleniyor...';
-      _addressController.text = _address;
     });
 
-    if (await _checkInternetConnection()) {
+    // ignore: unrelated_type_equality_checks
+    if (await Connectivity().checkConnectivity() != ConnectivityResult.none) {
       try {
         List<Placemark> placemarks = await placemarkFromCoordinates(
           coordinates.latitude,
           coordinates.longitude,
-        ).timeout(const Duration(seconds: 20)); // Zaman aşımı süresi 20 saniye
+        ).timeout(const Duration(seconds: 20));
 
         if (placemarks.isNotEmpty) {
           Placemark placemark = placemarks.first;
           setState(() {
             _address =
-                "${placemark.street}, ${placemark.locality}, ${placemark.subLocality}, ${placemark.administrativeArea}, ${placemark.country}";
-            _addressController.text = _address; // Update the text field
+                "${placemark.street}, ${placemark.locality}, ${placemark.administrativeArea}, ${placemark.country}";
           });
         } else {
           setState(() {
             _address = 'Adres bilgisi alınamadı: Boş sonuç';
-            _addressController.text = _address;
           });
         }
-      } on TimeoutException catch (_) {
+      } on TimeoutException {
         setState(() {
           _address = 'Adres bilgisi alınamadı: Zaman aşımı';
-          _addressController.text = _address;
         });
       } catch (e) {
         setState(() {
           _address = 'Adres bilgisi alınamadı: $e';
-          _addressController.text = _address;
         });
       } finally {
         setState(() {
@@ -77,7 +66,6 @@ class _LocationState extends State<Location> {
     } else {
       setState(() {
         _address = 'İnternet bağlantısı yok';
-        _addressController.text = _address;
         _isLoading = false;
       });
     }
@@ -86,9 +74,7 @@ class _LocationState extends State<Location> {
   void _onMapTap(LatLng tappedPoint) {
     setState(() {
       _selectedLatLng = tappedPoint;
-      _address =
-          'Adres bilgisi yükleniyor...'; // Placeholder while fetching the address
-      _addressController.text = _address; // Update the text field
+      _address = 'Adres bilgisi yükleniyor...';
     });
 
     _getAddressFromLatLng(tappedPoint);
@@ -99,7 +85,6 @@ class _LocationState extends State<Location> {
     return Scaffold(
       appBar: AppBar(title: const Text('Adresini Seç')),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -107,17 +92,11 @@ class _LocationState extends State<Location> {
               alignment: Alignment.centerRight,
               children: [
                 TextField(
-                  controller: _addressController,
-                  decoration: const InputDecoration(
-                    labelText: 'Adres',
-                    border: OutlineInputBorder(),
+                  readOnly: true,
+                  decoration: InputDecoration(
+                    labelText: _address,
+                    border: const OutlineInputBorder(),
                   ),
-                  maxLines: null,
-                  onChanged: (value) {
-                    setState(() {
-                      _address = value;
-                    });
-                  },
                 ),
                 if (_isLoading)
                   const Padding(
@@ -132,7 +111,7 @@ class _LocationState extends State<Location> {
               onMapCreated: _onMapCreated,
               onTap: _onMapTap,
               initialCameraPosition: CameraPosition(
-                target: _center,
+                target: _initialPosition,
                 zoom: 14.0,
               ),
               markers: {
@@ -141,14 +120,7 @@ class _LocationState extends State<Location> {
                   position: _selectedLatLng,
                   draggable: true,
                   onDragEnd: (newPosition) {
-                    setState(() {
-                      _selectedLatLng = newPosition;
-                      _address =
-                          'Adres bilgisi yükleniyor...'; // Placeholder while fetching the address
-                      _addressController.text =
-                          _address; // Update the text field
-                    });
-                    _getAddressFromLatLng(newPosition);
+                    _onMapTap(newPosition);
                   },
                 ),
               },
